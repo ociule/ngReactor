@@ -15,11 +15,11 @@
           </td></tr>
           <tr>
             <td>Outlet coolant temperature</td>
-            <td>{{ game.primaryLoop.outletTemp | number:2}} degC</td>
+            <td>{{ game.primaryLoop.outletTemp | number:2}} &deg;C <span class='label label-{{ game.primaryLoop.outletTempWarning()[1] }}'>{{ game.primaryLoop.outletTempWarning()[0] }}</span></td>
           </tr>
           <tr>
             <td>Inlet coolant temperature</td>
-            <td>{{ game.primaryLoop.inletTemp | number:2}} degC</td>
+            <td>{{ game.primaryLoop.inletTemp | number:2}} &deg;C <span class='label label-{{ game.primaryLoop.inletTempWarning()[1] }}'>{{ game.primaryLoop.inletTempWarning()[0] }}</span></td>
           </tr>
         </tbody>
       </table>

@@ -41,7 +41,47 @@ angular.module('angularReactorApp')
         return core.DESIGN_THERMAL_POWER * powerFraction;
     };
 
-
     // Specific heat mass of the fuel rod assembly: modelled uranium + steel masses. Very naive, of course.
     this.CORE_CP_M = this.STEEL_MASS * this.STEEL_CP * 1000 + this.URANIUM_MASS * this.URANIUM_CP * 1000; // J/deg
+
+    this.getThermalPowerWarning = function() {
+        var t = core.getThermalPower() / 1000000;
+        if (t < 1) {
+            return ['Stopped', 'default'];
+        }
+        if (t < 100) {
+            return ['Very low', 'info'];
+        }
+        if (t < 1350) {
+            return ['Low', 'info'];
+        }
+        if (t < 1450) {
+            return ['Nominal', 'success'];
+        }
+        if (t < 1550) {
+            return ['Overpowered', 'warning'];
+        }
+        if (t > 1550) {
+            return ['Severely overpowered', 'danger'];
+        }
+    };
+
+    this.fuelRodTempWarning = function() {
+        var t = core.fuelRodTemp;
+        if (t < 600) {
+            return ['Cold', 'info'];
+        }
+        if (t < 630) {
+            return ['Warm', 'info'];
+        }
+        if (t < 690) {
+            return ['Nominal', 'success'];
+        }
+        if (t < 800) {
+            return ['Overheated', 'warning'];
+        }
+        if (t > 900) {
+            return ['Severely overheated', 'danger'];
+        }
+    };
 });

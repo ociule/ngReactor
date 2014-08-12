@@ -37,6 +37,7 @@ angular.module('angularReactorApp')
         if (dVolTemp > game.water.CRITICAL_TEMP) {
             console.log('Core temparature above critical, rupture of pressure vessel');
             stop = true;
+            $('#failureModal').modal();
         }
 
         // That same volume of water goes through the steam generator, losing heat

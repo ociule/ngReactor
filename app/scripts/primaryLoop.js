@@ -83,4 +83,20 @@ angular.module('angularReactorApp')
             return ['Severely overheated', 'danger'];
         }
     };
+
+    this.inletTempWarning = function() {
+        var ot = primaryLoop.inletTemp;
+        if (ot < 268) { 
+            return ['Cold', 'info'];
+        }
+        if (ot < 280) {
+            return ['Nominal', 'success'];
+        }
+        if (ot < 300) {
+            return ['Overheated', 'warning'];
+        }
+        if (ot > 300) {
+            return ['Severely overheated', 'danger'];
+        }
+    };
 });

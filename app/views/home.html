@@ -3,19 +3,11 @@
   <div class="table">
     <table class="table">
       <tbody>
-        <tr><td class="label-td">Rod position</td><td>
-          <div class="input-group">
-            <input class="form-control" type="number" value="{{ game.core.rodPosition }}" readonly/>
-            <div class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="game.core.removeRod()"><span class="glyphicon glyphicon-arrow-up">Full Up</span></button>
-            <button type="button" class="btn btn-default" ng-click="game.core.moveRodUp()"><span class="glyphicon glyphicon-arrow-up">Up</span></button>
-            <button type="button" class="btn btn-default" ng-click="game.core.moveRodDown()"><span class="glyphicon glyphicon-arrow-down">Down</span></button>
-            <button type="button" class="btn btn-default" ng-click="game.core.insertRod()"><span class="glyphicon glyphicon-arrow-down">Full Down</span></button>
-            </div>
-          </div>
+        <tr><td class="label-td">Rod position</td><td ng-include="'views/rodPosition.html'">
         </td></tr>
         <tr>
-        <td>Thermal power</td><td>{{ game.core.getThermalPower() / 1000000 | number:2}} MW </td>
+        <td>Thermal power</td>
+        <td> <value-with-label label="game.core.getThermalPowerWarning()" unit="MW" value="game.core.getThermalPower() / 1000000"/></td>
         </tr>
         <tr><td class="label-td">Primary pump</td><td>
             <div class="btn-group" data-toggle="buttons">
@@ -29,7 +21,7 @@
         </td></tr>
         <tr>
             <td>Outlet water temperature</td>
-            <td>{{ game.primaryLoop.outletTemp | number:2 }} degC
+            <td>{{ game.primaryLoop.outletTemp | number:2 }} &deg;C
             <span class='label label-{{ game.primaryLoop.outletTempWarning()[1] }}'>{{ game.primaryLoop.outletTempWarning()[0] }}</span></td>
         </tr>
       </tbody>
