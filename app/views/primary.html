@@ -1,0 +1,27 @@
+<div class="row">
+  <h3>Primary loop</h3>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr><td class="label-td">Primary pump</td><td>
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary" ng-class="{active: !game.primaryLoop.pump}" ng-click='game.primaryLoop.pump = false'>
+                  <input type="radio" name="options" id="option1" ng-click='game.primaryLoop.pump = false'>OFF
+                </label>
+                <label class="btn btn-primary" ng-class="{active: game.primaryLoop.pump}" ng-click='game.primaryLoop.pump = true'>
+                  <input type="radio" name="options" id="option2" ng-click='game.primaryLoop.pumpOn()'>ON
+                </label>
+              </div>
+          </td></tr>
+          <tr>
+            <td>Outlet coolant temperature</td>
+            <td>{{ game.primaryLoop.outletTemp | number:2}} degC</td>
+          </tr>
+          <tr>
+            <td>Inlet coolant temperature</td>
+            <td>{{ game.primaryLoop.inletTemp | number:2}} degC</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+</div>

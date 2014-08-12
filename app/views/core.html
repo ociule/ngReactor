@@ -1,0 +1,31 @@
+<div class="row">
+  <h3>Reactor core</h3>
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr><td class="label-td">Rod position</td><td>
+            <div class="input-group">
+              <input class="form-control" type="number" value="{{ game.core.rodPosition }}" readonly/>
+              <div class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="game.core.removeRod()"><span class="glyphicon glyphicon-arrow-up">Full Up</span></button>
+              <button type="button" class="btn btn-default" ng-click="game.core.moveRodUp()"><span class="glyphicon glyphicon-arrow-up">Up</span></button>
+              <button type="button" class="btn btn-default" ng-click="game.core.moveRodDown()"><span class="glyphicon glyphicon-arrow-down">Down</span></button>
+              <button type="button" class="btn btn-default" ng-click="game.core.insertRod()"><span class="glyphicon glyphicon-arrow-down">Full Down</span></button>
+              </div>
+            </div>
+          </td></tr>
+          <tr>
+            <td>Thermal power</td>
+            <td>{{ game.core.getThermalPower() / 1000000 | number:2}} MW</td>
+          </tr>
+          <tr>
+            <td>Fuel rod temperature</td>
+            <td>{{ game.core.fuelRodTemp | number:2}} degC</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+</div>
+
+<div class="row marketing">
+</div>
