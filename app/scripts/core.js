@@ -12,10 +12,14 @@ angular.module('angularReactorApp')
     this.STEEL_MASS = 40000; // kg
     this.URANIUM_CP = 0.12; // specific heat, kJ/kg*deg
     this.STEEL_CP = 0.466; // specific heat, kJ/kg*deg
-    this.fuelRodTemp = this.water.ROOM_TEMP; // Fuel rods start at room temp
 
-    // Rod starts fully inserted
-    this.rodPosition = 0;
+    this.restart = function() {
+        core.fuelRodTemp = core.water.ROOM_TEMP; // Fuel rods start at room temp
+        // Rod starts fully inserted
+        core.rodPosition = 0;
+    };
+    this.restart();
+
     this.moveRodDown = function() {
         core.rodPosition -= 1;
         if (core.rodPosition < 0) {

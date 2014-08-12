@@ -10,23 +10,27 @@ angular.module('angularReactorApp')
     // Primary loop 
     // Primary loop pump moves 12 m3 of water per second through the core
 
-    // Pump starts off
-    this.pump = false;
-    this.inletTemp = this.water.ROOM_TEMP;
-    this.outletTemp = this.water.ROOM_TEMP;
 
     this.OPERATING_DEBIT = 12; // m3 / s
     this.OPERATING_PRESSURE = 15.51; // MPa
     this.DESIGN_PRESSURE = 17.24; // Over pressure by a factor of x will lead to rupture, loss of ability to maintain coolant inventory
     this.MAX_PRESSURE = 17.24 * 3;
 
-    this.pumpFraction = primaryLoop.OPERATING_DEBIT / primaryLoop.core.COOLANT_VOLUME;
-    this.nWaterVolumes = parseInt(1 / (primaryLoop.conf.tickFraction * primaryLoop.pumpFraction));
-    this.dVolume = 134 / this.nWaterVolumes;
-    this.waterVolumes = [];
-    for (var i = 0; i < this.nWaterVolumes; i++) {
-        primaryLoop.waterVolumes.push(this.water.ROOM_TEMP);
-    }
+    this.restart = function() {
+        // Pump starts off
+        this.pump = false;
+        this.inletTemp = this.water.ROOM_TEMP;
+        this.outletTemp = this.water.ROOM_TEMP;
+        this.pumpFraction = primaryLoop.OPERATING_DEBIT / primaryLoop.core.COOLANT_VOLUME;
+        this.nWaterVolumes = parseInt(1 / (primaryLoop.conf.tickFraction * primaryLoop.pumpFraction));
+        this.dVolume = 134 / this.nWaterVolumes;
+
+        this.waterVolumes = [];
+        for (var i = 0; i < this.nWaterVolumes; i++) {
+            primaryLoop.waterVolumes.push(this.water.ROOM_TEMP);
+        }
+    };
+    this.restart();
 
     // Just the aerage of outlet and inlet
     this.getAverageWaterTemperature = function() {

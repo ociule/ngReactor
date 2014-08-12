@@ -11,6 +11,15 @@ angular.module('angularReactorApp')
 
     var stop = false;
     this.tickLength = 0;
+
+    this.restart = function() {
+        stop = true;
+        console.log('Restart');
+        this.core.restart();
+        this.primaryLoop.restart();
+        $timeout(this.start, 400);
+    };
+    
     this.tick = function() {
         var tickStart = new Date();
         try {
@@ -58,12 +67,16 @@ angular.module('angularReactorApp')
     };
 
     this.displayTick = function() {
-        console.log('tick', game.tickLength, game.core.fuelRodTemp, game.primaryLoop.getAverageWaterTemperature());
-        if (!stop) { $timeout(game.displayTick, 100); }
+        //console.log('tick', game.tickLength, game.core.fuelRodTemp, game.primaryLoop.getAverageWaterTemperature());
+        if (!stop) { $timeout(game.displayTick, 200); }
     };
 
+    this.start = function() {
+        stop = false;
+        game.tick();
+        game.displayTick();
+    };
     // Start ticking
-    this.tick();
-    this.displayTick();
+    this.start();
 
 });

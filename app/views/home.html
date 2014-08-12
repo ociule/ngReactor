@@ -1,5 +1,10 @@
 <div class="row">
   <h3>Home</h3>
+  <div class="alert alert-info" role="alert">
+    If this is your first time, we recommend that you try the tutorial first.
+  <button class="btn btn-primary" ng-click="startOnboarding()">Start tutorial</button>
+  </div>
+
   <div class="table">
     <table class="table">
       <tbody>
@@ -9,15 +14,16 @@
         <td>Thermal power</td>
         <td> <value-with-label label="game.core.getThermalPowerWarning()" unit="MW" value="game.core.getThermalPower() / 1000000"/></td>
         </tr>
-        <tr><td class="label-td">Primary pump</td><td>
+        <tr><td class="label-td">Primary pump</td><td ng-include="'views/pumpControl.html'">
             <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-primary" ng-class="{active: !game.primaryLoop.pump}" ng-click='game.primaryLoop.pump = false'>
+              <label class="btn btn-danger" ng-class="{active: !game.primaryLoop.pump}" ng-click='game.primaryLoop.pump = false'>
                 <input type="radio" name="options" id="option1" ng-click='game.primaryLoop.pump = false'>OFF
               </label>
               <label class="btn btn-primary" ng-class="{active: game.primaryLoop.pump}" ng-click='game.primaryLoop.pump = true'>
                 <input type="radio" name="options" id="option2" ng-click='game.primaryLoop.pumpOn()'>ON
               </label>
             </div>
+            <span class="label label-{{ game.core.rodPosition > 0 && !game.primaryLoop.pump ? 'danger' : 'none' }}">Warning <i class="glyphicon glyphicon-exclamation-sign"></i></span>
         </td></tr>
         <tr>
             <td>Outlet water temperature</td>
