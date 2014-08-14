@@ -1,9 +1,2 @@
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-danger" ng-class="{active: !game.primaryLoop.pump}" ng-click='game.primaryLoop.pump = false'>
-                <input type="radio" name="options" id="option1" ng-click='game.primaryLoop.pump = false'>OFF
-              </label>
-              <label class="btn btn-primary" ng-class="{active: game.primaryLoop.pump}" ng-click='game.primaryLoop.pump = true'>
-                <input type="radio" name="options" id="option2" ng-click='game.primaryLoop.pumpOn()'>ON
-              </label>
-            </div>
+            <input bs-switch type="checkbox" switch-off-color="danger" switch-on-color="success" name="primaryLoopPumpCheckbox" ng-model="game.primaryLoop.pump">
             <span class="label label-{{ game.core.rodPosition > 0 && !game.primaryLoop.pump ? 'danger' : 'none' }}">Warning <i class="glyphicon glyphicon-exclamation-sign"></i></span>

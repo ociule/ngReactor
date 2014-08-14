@@ -16,10 +16,10 @@ angular.module('angularReactorApp')
     };
 
     $scope.showOnboarding = false;
+    $scope.stepIndex = 0;
     $scope.startOnboarding = function() {
-        this.game.restart();
-        $scope.stepIndex = 0;
         $scope.showOnboarding = true;
+        this.game.restart();
     };
 
     $scope.onboardingSteps = [

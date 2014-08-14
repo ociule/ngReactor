@@ -16,6 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'frapontillo.bootstrap-switch',
     'ngOnboarding'
   ])
   .config(function ($routeProvider) {
